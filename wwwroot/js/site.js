@@ -1,5 +1,4 @@
-﻿function deleteTodo(i)
-{
+﻿function deleteTodo(i) {
     $.ajax({
         url: 'Home/Delete',
         type: 'POST',
@@ -13,7 +12,6 @@
 }
 
 function populateForm(i) {
-
     $.ajax({
         url: 'Home/PopulateForm',
         type: 'GET',
@@ -26,6 +24,19 @@ function populateForm(i) {
             $("#Todo_Id").val(response.id);
             $("#form-button").val("Update Todo");
             $("#form-action").attr("action", "/Home/Update");
+        }
+    });
+}
+
+function done(i) {
+    $.ajax({
+        url:'Home/Done',
+        type:'POST',
+        data: {
+            id: i
+        },
+        success: function(){
+        window.location.reload();
         }
     });
 }

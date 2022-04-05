@@ -98,6 +98,22 @@ public class HomeController : Controller
         return Json(new { });
     }
 
+    [HttpPost]
+    public void Done(int id)
+    {
+        using (SqliteConnection connection = new SqliteConnection("Data Source=db.sqlite"))
+        {
+            using (var tableCmd = connection.CreateCommand())
+            {
+                connection.Open();
+                var item = GetById(id);
+                tableCmd.CommandText = $"INSERT INTO done_todos (name) VALUES ('{item.Name}')";
+                tableCmd.ExecuteNonQuery();
+                Delete(id);
+            }
+        }
+    }
+
     [HttpGet]
     public JsonResult PopulateForm(int id)
     {

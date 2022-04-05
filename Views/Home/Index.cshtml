@@ -5,8 +5,9 @@
         <table class="table">
             <thead>
                 <tr class="table-primary">
-                    <th scope="col">Id</th>
-                    <th scope="col">Name</th>
+                    @* <th scope="col">Id</th> *@
+                    <th scope="col">My todo's</th>
+                    @* <th scope="col">Done?</th> *@
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -14,11 +15,12 @@
                 @foreach (var t in Model.TodoList)
                 {
                     <tr>
-                        <td class="todos-column" scope="row">@t.Id</td>
+                        @* <td class="todos-column" scope="row">@t.Id</td> *@
                         <td class="todos-column">@t.Name</td>
                         <td class="buttons-column">
-                            <input type="submit" class="btn btn-danger"  value="Delete" onclick="deleteTodo(@t.Id)" />
+                            <input type="submit" class="btn btn-danger" value="Delete" onclick="deleteTodo(@t.Id)" />
                             <input type="submit" class="btn btn-primary" value="Update" onclick="populateForm(@t.Id)" />
+                            <input type="submit" class="btn btn-success" value="Done" onclick="done(@t.Id)" />
                         </td>
                     </tr>
                 }
