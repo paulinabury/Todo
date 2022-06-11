@@ -5,9 +5,7 @@
         <table class="table">
             <thead>
                 <tr class="table-primary">
-                    @* <th scope="col">Id</th> *@
                     <th scope="col">My todo's</th>
-                    @* <th scope="col">Done?</th> *@
                     <th scope="col">Deadline</th>
                     <th scope="col">Actions</th>
                 </tr>
@@ -16,7 +14,6 @@
                 @foreach (var t in Model.TodoList)
                 {
                     <tr>
-                        @* <td class="todos-column" scope="row">@t.Id</td> *@
                         <td class="todos-column">@t.Name</td>
                         <td class="todos-column">@t.Deadline</td>
                         <td class="buttons-column">

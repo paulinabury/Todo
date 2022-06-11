@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.Sqlite;
 using Todo.Models;
 using Todo.Models.ViewModels;
@@ -99,7 +98,7 @@ public class HomeController : Controller
         return Json(new { });
     }
 
-    //[HttpPost]
+    [HttpPost]
     public void Done(int id)
     {
         using (SqliteConnection connection = new SqliteConnection("Data Source=db.sqlite"))
@@ -145,9 +144,17 @@ public class HomeController : Controller
                     if (reader.HasRows)
                     {
                         reader.Read();
-                        todo.Id = reader.GetInt32(0);
-                        todo.Name = reader.GetString(1);
-                        todo.Deadline = reader.GetString(2);
+                        try
+                        {
+                            todo.Id = reader.GetInt32(0);
+                            todo.Name = reader.GetString(1);
+                            todo.Deadline = reader.GetString(2);
+                        }
+                        catch (Exception ex)
+                        {
+                            System.Console.WriteLine(ex.Message);
+                        }
+
                     }
                     else
                     {
@@ -166,8 +173,7 @@ public class HomeController : Controller
             using (var tableCmd = connection.CreateCommand())
             {
                 connection.Open();
-                tableCmd.CommandText = $"UPDATE todo SET name = '{todo.Name}' WHERE Id = '{todo.Id}'";
-                tableCmd.CommandText = $"UPDATE todo SET deadline = '{todo.Deadline}' WHERE Id = '{todo.Id}'";
+                tableCmd.CommandText = $"UPDATE todo SET name = '{todo.Name}', deadline = '{todo.Deadline}' WHERE Id = '{todo.Id}'";
                 try
                 {
                     tableCmd.ExecuteNonQuery();
