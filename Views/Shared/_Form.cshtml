@@ -8,6 +8,7 @@
         <div class="col-xl-6 col-lg-8 col-md-8 col-sm-10">
             <input asp-for="Todo.Id" type="hidden" class="form-control"/>
             <input asp-for="Todo.Name" class="form-control" placeholder="What you need to do?" />
+            <hr>
             <span asp-validation-for="Todo.Name" class="text-danger"></span>
             <input asp-for="Todo.Deadline" class="form-control" placeholder="What is the deadline?"/>
             <span asp-validation-for="Todo.Deadline" class="text-danger"></span>
