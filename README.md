@@ -1,7 +1,7 @@
 # Todo
 Studencki projekt na zajęcia Projektowanie aplikacji www
 
-Aplikacja ToDo - umożliwia tworzenie listę krótkich zadań do wykonania w określonym czasie.
+Aplikacja ToDo umożliwia tworzenie listę krótkich zadań do wykonania w określonym czasie.
 
 Użytkownik ma możliwość dodawać zadania, wprowadzać w nich zmiany, oznaczać jako wykonane oraz usuwać.
 Kliknięcie "Done" przenosi informację o wykonanym zadaniu do pomocniczej bazy danych.
